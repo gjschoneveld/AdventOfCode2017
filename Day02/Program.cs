@@ -31,10 +31,10 @@ namespace Day02
 
             var rows = input.Select(line => line.Split('\t').Select(value => int.Parse(value)));
 
-            var answer1 = rows.Select(r => r.Max() - r.Min()).Aggregate((a, b) => a + b);
+            var answer1 = rows.Select(r => r.Max() - r.Min()).Sum();
             Console.WriteLine($"Answer 1: {answer1}");
 
-            var answer2 = rows.Select(r => FindPerfectDivision(r)).Aggregate((a, b) => a + b);
+            var answer2 = rows.Select(r => FindPerfectDivision(r)).Sum();
             Console.WriteLine($"Answer 2: {answer2}");
 
             Console.ReadKey();
