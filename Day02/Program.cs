@@ -9,7 +9,7 @@ namespace Day02
 {
     class Program
     {
-        static int FindDivisor(IEnumerable<int> row)
+        static int FindPerfectDivision(IEnumerable<int> row)
         {
             foreach (var high in row)
             {
@@ -22,7 +22,7 @@ namespace Day02
                 }
             }
 
-            throw new Exception("No divisor");
+            throw new Exception("No perfect division");
         }
 
         static void Main(string[] args)
@@ -34,7 +34,7 @@ namespace Day02
             var answer1 = rows.Select(r => r.Max() - r.Min()).Aggregate((a, b) => a + b);
             Console.WriteLine($"Answer 1: {answer1}");
 
-            var answer2 = rows.Select(r => FindDivisor(r)).Aggregate((a, b) => a + b);
+            var answer2 = rows.Select(r => FindPerfectDivision(r)).Aggregate((a, b) => a + b);
             Console.WriteLine($"Answer 2: {answer2}");
 
             Console.ReadKey();
