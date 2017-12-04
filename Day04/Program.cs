@@ -21,7 +21,7 @@ namespace Day04
 
         static bool IsValid2(IEnumerable<string> line)
         {
-            return line.Count() == line.Select(w => SortLetters(w)).Distinct().Count();
+            return IsValid1(line.Select(w => SortLetters(w)));
         }
 
         static void Main(string[] args)
