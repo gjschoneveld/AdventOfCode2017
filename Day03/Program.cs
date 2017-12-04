@@ -48,21 +48,6 @@ namespace Day03
             }
         }
 
-        static (int x, int y) FindPosition(int value)
-        {
-            int current = 1;
-            foreach (var pos in Positions())
-            {
-                if (current == value)
-                {
-                    return pos;
-                }
-                current++;
-            }
-
-            throw new Exception("Position not found");
-        }
-
         static int GetValue(Dictionary<(int x, int y), int> values, (int x, int y) pos)
         {
             if (values.ContainsKey(pos))
@@ -108,7 +93,7 @@ namespace Day03
         {
             int input = 312051;
 
-            var pos = FindPosition(input);
+            var pos = Positions().Skip(input - 1).First();
             var answer1 = Math.Abs(pos.x) + Math.Abs(pos.y);
             Console.WriteLine($"Answer 1: {answer1}");
 
