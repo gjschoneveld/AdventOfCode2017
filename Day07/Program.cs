@@ -53,9 +53,9 @@ namespace Day07
 
         public int CorrectWeight()
         {
-            var other = parent.children.First(c => c != this);
+            var sibling = parent.children.First(c => c != this);
 
-            int correctWeight = other.totalWeight - children.Sum(c => c.totalWeight);
+            int correctWeight = sibling.totalWeight - children.Sum(c => c.totalWeight);
 
             return correctWeight;
         }
