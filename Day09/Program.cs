@@ -12,8 +12,6 @@ namespace Day09
         string input;
         int index;
 
-        char? next;
-
         public Lexer(string input)
         {
             this.input = input;
@@ -21,24 +19,12 @@ namespace Day09
 
         public char Next()
         {
-            if (next.HasValue)
-            {
-                var result = next.Value;
-                next = null;
-                return result;
-            }
-
             return input[index++];
         }
 
         public char Peek()
         {
-            if (!next.HasValue)
-            {
-                next = Next();
-            }
-
-            return next.Value;
+            return input[index];
         }
     }
 
