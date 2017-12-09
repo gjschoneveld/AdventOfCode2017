@@ -28,11 +28,6 @@ namespace Day09
                 return result;
             }
 
-            while (input[index] == '!')
-            {
-                index += 2;
-            }
-
             return input[index++];
         }
 
@@ -93,6 +88,13 @@ namespace Day09
             while (c != '>')
             {
                 c = l.Next();
+
+                if (c == '!')
+                {
+                    l.Next(); // consume char after !
+                    continue;
+                }
+
                 count++;
             }
 
