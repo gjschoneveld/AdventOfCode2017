@@ -94,19 +94,6 @@ namespace Day10
 
     class Program
     {
-        static List<int> ToAscii(string x)
-        {
-            var result = new List<int>();
-
-            foreach (var c in x)
-            {
-                var ascii = (int)c;
-                result.Add(ascii);
-            }
-
-            return result;
-        }
-
         static void Main(string[] args)
         {
             string input = "212,254,178,237,2,0,1,54,167,92,117,125,255,61,159,164";
@@ -118,7 +105,7 @@ namespace Day10
             var answer1 = hash1.Part1();
             Console.WriteLine($"Answer 1: {answer1}");
 
-            var ascii = ToAscii(input);
+            var ascii = input.Select(c => (int)c).ToList();
             var suffix = new List<int> { 17, 31, 73, 47, 23 };
             ascii.AddRange(suffix);
             var hash2 = new Hash(itemCount, ascii);
