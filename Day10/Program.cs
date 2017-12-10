@@ -65,7 +65,7 @@ namespace Day10
 
             for (int g = 0; g < groups; g++)
             {
-                var inner = items.Skip(g * itemsPerGroup).Take(itemsPerGroup).ToList();
+                var inner = items.GetRange(g * itemsPerGroup, itemsPerGroup);
                 int xor = Xor(inner);
 
                 result.Add(xor);
