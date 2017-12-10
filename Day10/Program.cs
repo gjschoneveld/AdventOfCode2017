@@ -59,8 +59,8 @@ namespace Day10
 
         IEnumerable<int> Dense(IEnumerable<int> items, int numberOfGroups)
         {
-            var itemsPerGrpup = items.Count() / numberOfGroups;
-            var groups = items.Select((item, index) => new { group = index / itemsPerGrpup, item }).GroupBy(x => x.group, x => x.item);
+            var itemsPerGroup = items.Count() / numberOfGroups;
+            var groups = items.Select((item, index) => new { group = index / itemsPerGroup, item }).GroupBy(x => x.group, x => x.item);
             var dense = groups.Select(g => Xor(g));
             return dense;
         }
