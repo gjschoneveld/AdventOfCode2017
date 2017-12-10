@@ -113,7 +113,7 @@ namespace Day10
 
             int itemCount = 256;
 
-            var lengths = input.Split(new char[] { ',' }).Select(l => int.Parse(l)).ToList();
+            var lengths = input.Split(',').Select(l => int.Parse(l)).ToList();
             var hash1 = new Hash(itemCount, lengths);
             var answer1 = hash1.Part1();
             Console.WriteLine($"Answer 1: {answer1}");
