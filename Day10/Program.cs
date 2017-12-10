@@ -55,26 +55,16 @@ namespace Day10
             return list[0] * list[1];
         }
 
-        int Xor(List<int> items) => items.Aggregate((a, b) => a ^ b);
+        int Xor(IEnumerable<int> items) => items.Aggregate((a, b) => a ^ b);
 
-        List<int> Dense(List<int> items, int groups)
+        IEnumerable<int> Dense(IEnumerable<int> items, int numberOfGroups)
         {
-            var result = new List<int>();
-
-            int itemsPerGroup = items.Count / groups;
-
-            for (int g = 0; g < groups; g++)
-            {
-                var inner = items.GetRange(g * itemsPerGroup, itemsPerGroup);
-                int xor = Xor(inner);
-
-                result.Add(xor);
-            }
-
-            return result;
+            var groups = items.Select((item, index) => new { item = item, group = index / numberOfGroups }).GroupBy(x => x.group, x => x.item);
+            var dense = groups.Select(g => Xor(g));
+            return dense;
         }
 
-        string Hex(List<int> items) => string.Join("", items.Select(i => i.ToString("x2")));
+        string Hex(IEnumerable<int> items) => string.Join("", items.Select(i => i.ToString("x2")));
 
         public string Part2()
         {
