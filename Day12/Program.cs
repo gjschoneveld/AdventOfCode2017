@@ -40,10 +40,9 @@ namespace Day12
                     continue;
                 }
 
-                var newNeighbours = current.neighbours.Where(nb => !nb.visited);
-                foreach (var nnb in newNeighbours)
+                foreach (var nb in current.neighbours)
                 {
-                    toVisit.Enqueue(nnb);
+                    toVisit.Enqueue(nb);
                 }
 
                 current.visited = true;
