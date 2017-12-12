@@ -35,13 +35,18 @@ namespace Day12
             while (toVisit.Count > 0)
             {
                 var current = toVisit.Dequeue();
-                current.visited = true;
+                if (current.visited)
+                {
+                    continue;
+                }
 
                 var newNeighbours = current.neighbours.Where(nb => !nb.visited);
                 foreach (var nnb in newNeighbours)
                 {
                     toVisit.Enqueue(nnb);
                 }
+
+                current.visited = true;
             }
         }
 
