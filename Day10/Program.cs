@@ -104,7 +104,6 @@ namespace Day10
             string input = "212,254,178,237,2,0,1,54,167,92,117,125,255,61,159,164";
 
             int itemCount = 256;
-
             var lengths = input.Split(',').Select(l => int.Parse(l)).ToList();
             var hash1 = new KnotHash(itemCount, lengths);
             var answer1 = hash1.Part1();
