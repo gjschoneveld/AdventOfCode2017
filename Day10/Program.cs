@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Day10
 {
-    class Hash
+    public class KnotHash
     {
         int current = 0;
         int skipSize = 0;
@@ -14,7 +14,7 @@ namespace Day10
         List<int> list;
         List<int> lengths;
 
-        public Hash(int itemCount, List<int> lengths)
+        public KnotHash(int itemCount, List<int> lengths)
         {
             list = Enumerable.Range(0, itemCount).ToList();
             this.lengths = lengths;
@@ -81,6 +81,20 @@ namespace Day10
 
             return hex;
         }
+
+        public static string HashString(string input)
+        {
+            int itemCount = 256;
+
+            var ascii = input.Select(c => (int)c).ToList();
+            var suffix = new List<int> { 17, 31, 73, 47, 23 };
+            ascii.AddRange(suffix);
+
+            var hash = new KnotHash(itemCount, ascii);
+            var result = hash.Part2();
+
+            return result;
+        }
     }
 
     class Program
@@ -92,15 +106,11 @@ namespace Day10
             int itemCount = 256;
 
             var lengths = input.Split(',').Select(l => int.Parse(l)).ToList();
-            var hash1 = new Hash(itemCount, lengths);
+            var hash1 = new KnotHash(itemCount, lengths);
             var answer1 = hash1.Part1();
             Console.WriteLine($"Answer 1: {answer1}");
 
-            var ascii = input.Select(c => (int)c).ToList();
-            var suffix = new List<int> { 17, 31, 73, 47, 23 };
-            ascii.AddRange(suffix);
-            var hash2 = new Hash(itemCount, ascii);
-            var answer2 = hash2.Part2();
+            var answer2 = KnotHash.HashString(input);
             Console.WriteLine($"Answer 2: {answer2}");
 
             Console.ReadKey();
