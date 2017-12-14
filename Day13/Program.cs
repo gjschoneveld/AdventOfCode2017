@@ -44,7 +44,7 @@ namespace Day13
         static void Main(string[] args)
         {
             var input = File.ReadAllLines("input.txt");
-            var layers = input.Select(line => Layer.Parse(line));
+            var layers = input.Select(line => Layer.Parse(line)).ToList();
 
             var answer1 = layers.Where(l => l.Hit()).Sum(l => l.Severity);
             Console.WriteLine($"Answer 1: {answer1}");
