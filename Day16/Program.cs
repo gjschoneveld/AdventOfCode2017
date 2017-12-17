@@ -150,13 +150,12 @@ namespace Day16
             Console.WriteLine($"Answer 1: {answer1}");
 
             
-            var linesSeen = new HashSet<List<char>>(new LineComparer());
             var positionAfter = new Dictionary<int, List<char>>();
 
-            line = GenerateLine(count);
-            while (!linesSeen.Contains(line))
+            var start = GenerateLine(count);
+            line = start;
+            do
             {
-                linesSeen.Add(line);
                 positionAfter[positionAfter.Count] = line;
 
                 line = new List<char>(line);
@@ -164,7 +163,7 @@ namespace Day16
                 {
                     m.Apply(line);
                 }
-            }
+            } while (!line.SequenceEqual(start));
 
             int dances = 1_000_000_000;
             var index = dances % positionAfter.Count;
