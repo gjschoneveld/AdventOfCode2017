@@ -29,7 +29,7 @@ namespace Day17
             current = 0;
             var value = 0;
 
-            insertions = 5_000_000;
+            insertions = 50_000_000;
             for (int i = 1; i <= insertions; i++)
             {
                 current = (current + step) % i + 1;
