@@ -259,15 +259,13 @@ namespace Day18
             Console.WriteLine($"Answer 1: {answer1}");
 
 
-            var procs = new List<Processor>
+            var procCount = 2;
+            var procs = new List<Processor>();
+            for (int i = 0; i < procCount; i++)
             {
-                new Processor { mode = Mode.Part2, program = program },
-                new Processor { mode = Mode.Part2, program = program }
-            };
-
-            for (int i = 0; i < procs.Count; i++)
-            {
-                procs[i].registerFile['p'] = i;
+                var proc = new Processor { mode = Mode.Part2, program = program };
+                proc.registerFile['p'] = i;
+                procs.Add(proc);
             }
 
             var buffer = new Queue<long>();
