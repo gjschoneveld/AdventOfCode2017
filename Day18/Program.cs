@@ -47,7 +47,8 @@ namespace Day18
 
     class Snd : Instruction
     {
-        // snd X plays a sound with a frequency equal to the value of X.
+        // 1: snd X plays a sound with a frequency equal to the value of X.
+        // 2: snd X sends the value of X to the other program.
         public override long Execute(Processor proc)
         {
             switch (proc.mode)
@@ -107,7 +108,8 @@ namespace Day18
 
     class Rcv : Instruction
     {
-        // rcv X recovers the frequency of the last sound played, but only when the value of X is not zero. (If it is zero, the command does nothing.)
+        // 1: rcv X recovers the frequency of the last sound played, but only when the value of X is not zero. (If it is zero, the command does nothing.)
+        // 2: rcv X receives the next value and stores it in register X.
         public override long Execute(Processor proc)
         {
             switch (proc.mode)
