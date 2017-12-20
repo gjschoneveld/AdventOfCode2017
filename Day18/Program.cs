@@ -228,7 +228,7 @@ namespace Day18
 
         public Queue<long> Run(Queue<long> input = null)
         {
-            this.input = input ?? new Queue<long>();
+            this.input = input;
             output = new Queue<long>();
 
             halt = false;
@@ -257,9 +257,10 @@ namespace Day18
             Console.WriteLine($"Answer 1: {answer1}");
 
 
-            var procs = new List<Processor> {
+            var procs = new List<Processor>
+            {
                 new Processor { mode = Mode.Part2, program = program },
-                new Processor { mode = Mode.Part2, program = program },
+                new Processor { mode = Mode.Part2, program = program }
             };
 
             for (int i = 0; i < procs.Count; i++)
@@ -267,12 +268,13 @@ namespace Day18
                 procs[i].registerFile['p'] = i;
             }
 
-            var buffer = procs[0].Run();
-            var activeProcessor = 1;
+            var buffer = new Queue<long>();
             do
             {
-                buffer = procs[activeProcessor].Run(buffer);
-                activeProcessor = (activeProcessor + 1) % procs.Count;
+                foreach (var proc in procs)
+                {
+                    buffer = proc.Run(buffer);
+                }
             } while (buffer.Count > 0);
 
             var answer2 = procs[1].count;
