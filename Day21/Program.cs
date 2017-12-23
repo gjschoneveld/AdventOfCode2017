@@ -190,6 +190,8 @@ namespace Day21
         Grid pattern;
         public Grid result;
 
+        private List<Grid> similar;
+
         public bool Match(Grid g)
         {
             if (pattern.Count('#') != g.Count('#'))
@@ -197,7 +199,12 @@ namespace Day21
                 return false;
             }
 
-            return pattern.Similar().Any(s => s.Equals(g));
+            if (similar == null)
+            {
+                similar = pattern.Similar();
+            }
+
+            return similar.Any(s => s.Equals(g));
         }
 
         public static Rule Parse(string x)
