@@ -123,12 +123,12 @@ namespace Day20
                 }
             }
 
-            if (collisions.Count == 0)
+            if (collisions.Where(c => c >= 0).Count() == 0)
             {
                 return -1;
             }
 
-            return collisions.Min(c => (int)c);
+            return collisions.Where(c => c >= 0).Min(c => (int)c);
         }
 
         public void GatherCollisions(List<Particle> particles)
