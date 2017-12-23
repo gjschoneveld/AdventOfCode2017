@@ -148,7 +148,8 @@ namespace Day20
                     continue;
                 }
 
-                collisions.Add(new Collision {
+                collisions.Add(new Collision
+                {
                     particle = p,
                     time = time
                 });
