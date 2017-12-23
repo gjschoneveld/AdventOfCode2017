@@ -93,7 +93,7 @@ namespace Day20
 
             for (int i = 0; i < p.Count; i++)
             {
-                result.Add(new Formula { a = a[i] / 2, b = v[i] + (a[i] / 2), c = p[i] });
+                result.Add(new Formula { a = a[i] / 2m, b = v[i] + (a[i] / 2m), c = p[i] });
             }
 
             return result;
