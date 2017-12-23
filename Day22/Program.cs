@@ -143,8 +143,8 @@ namespace Day22
                     SetStatus(current, Status.Weakened);
                     break;
                 case Status.Weakened:
-                    infections++;
                     SetStatus(current, Status.Infected);
+                    infections++;
                     break;
                 case Status.Infected:
                     direction = Location.TurnRight(direction);
