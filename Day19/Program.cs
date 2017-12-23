@@ -17,12 +17,6 @@ namespace Day19
             Left
         }
 
-        class Location
-        {
-            public int x;
-            public int y;
-        }
-
         static char GetItem(List<List<char>> diagram, int x, int y)
         {
             if (y < 0 || y >= diagram.Count)
