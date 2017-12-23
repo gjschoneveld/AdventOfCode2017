@@ -192,6 +192,11 @@ namespace Day21
 
         public bool Match(Grid g)
         {
+            if (pattern.Count('#') != g.Count('#'))
+            {
+                return false;
+            }
+
             return pattern.Similar().Any(s => s.Equals(g));
         }
 
