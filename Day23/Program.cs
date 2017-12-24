@@ -33,6 +33,8 @@ namespace Day23
                     return new Mul { x = x, y = y };
                 case "jnz":
                     return new Jnz { x = x, y = y };
+                case "mod":
+                    return new Mod { x = x, y = y };
             }
 
             throw new Exception("Parse error");
@@ -80,6 +82,17 @@ namespace Day23
                 return y.Get(proc);
             }
 
+            return 1;
+        }
+    }
+
+    class Mod : Instruction
+    {
+        // mod X Y sets register X to the remainder of dividing the value contained in register X by the value of Y (that is, it sets X to the result of X modulo Y).
+        public override long Execute(Processor proc)
+        {
+            x.Set(proc, x.Get(proc) % y.Get(proc));
+            proc.multiplications++;
             return 1;
         }
     }
@@ -175,6 +188,21 @@ namespace Day23
             var answer1 = processor.multiplications;
             Console.WriteLine($"Answer 1: {answer1}");
 
+
+            var replacementLocation = 10;
+            var replacement = new string[]
+            {
+                "set e b",
+                "mod e d",
+                "jnz e 2",
+                "set f 0",
+                "jnz 1 6"
+            };
+
+            for (int i = 0; i < replacement.Length; i++)
+            {
+                program[replacementLocation + i] = Instruction.Parse(replacement[i]);
+            }
 
             processor = new Processor { program = program };
             processor.registerFile['a'] = 1;
